@@ -39,3 +39,36 @@ Hinweis:
     Diese Datei ist Teil des Projekts PatchControl. Änderungen an der Namenskonvention 
     sollten durch Anpassung dieses Headers dokumentiert werden.
 """
+"""Ab hier startet der Programmcode"""
+
+import sys
+from PyQt5.QtWidgets import QApplication
+from gui import PatchControlGUI                #importiert die GUI Klasse
+from database import Database
+
+def main():
+    app = QApplication(sys.argv)   # Erstelle die QApplication-Instanz
+    window = PatchControlGUI()               # Erstelle die Instanz der GUI
+    window.show()                  # Zeige das Hauptfenster
+    sys.exit(app.exec_())          # Starte das Event-Loop von PyQt
+
+if __name__ == "__main__":
+    main()
+
+# Erstelle eine Datenbankinstanz und initialisiere die Tabelle
+db = Database("patchcontrol.db")
+db.create_table()  # Tabelle erstellen, falls sie noch nicht existiert
+
+# Beispiel: Eine neue Dose hinzufügen
+db.add_dose("Gebäude A", "1", "101", 1, "A-1-1", "Netzwerk", "Patchpanel 1", "Patchpanel")
+
+# Beispiel: Alle Dosen aus der Datenbank abrufen und anzeigen
+dosen = db.get_all_dosen()
+for dose in dosen:
+    print(dose)
+
+# Beispiel: Eine Dose aktualisieren
+db.update_dose(1, raum="102", position=2)  # Ändert Raum und Position der Dose mit ID 1
+
+# Beispiel: Eine Dose löschen
+db.delete_dose(1)  # Löscht die Dose mit der ID 1
