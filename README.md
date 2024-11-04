@@ -15,7 +15,7 @@ Verwaltungsprogramm für Netzwerk- und Telefondosen
 
 ## Über das Projekt
 
-PatchControl wurde entwickelt, um IT-Administratoren eine zentrale Möglichkeit zur Verwaltung von Netzwerk- und Telefondosen zu bieten. Jede Dose ist mit spezifischen Informationen wie Standort (Gebäude, Etage, Raum), Bezeichnung (im Format x-x-x für Bucht-Leiste-Stift), Telefonnummer oder IP-Adresse und Anschluss (Netzwerk oder Telefonnetz) versehen. Die Daten werden in einer Datenbank gespeichert und sind einfach über eine grafische Benutzeroberfläche (GUI) zugänglich und editierbar.
+PatchControl wird entwickelt, um IT-Administratoren eine zentrale Möglichkeit zur Verwaltung von Netzwerk- und Telefondosen zu bieten. Jede Dose ist mit spezifischen Informationen wie Standort (Gebäude, Etage, Raum), Bezeichnung (im Format x-x-x für Bucht-Leiste-Stift), Telefonnummer oder IP-Adresse und Anschluss (Netzwerk oder Telefonnetz) versehen. Die Daten werden in einer Datenbank gespeichert und sind einfach über eine grafische Benutzeroberfläche (GUI) zugänglich und editierbar.
 
 ## Funktionen
 
