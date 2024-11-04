@@ -1,8 +1,8 @@
 """
 Projekt: PatchControl - Anwendung zur Verwaltung von Netzwerk- und Telefondosen
-Autor: [Dein Name]
-Version: 1.0
-Datum: [Datum]
+Autor: [feuervogt]
+Version: 0.1.0-alpha
+Datum: [04.11.2024]
 Beschreibung:
     PatchControl ist eine Anwendung zur Verwaltung der Netzwerk- und Telefondosen im Unternehmen. 
     Die Anwendung speichert die Lage der Dosen, deren Typ (Netzwerk oder Telefon), 
