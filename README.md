@@ -1,12 +1,6 @@
 # PatchControl
 Verwaltungsprogramm für Netzwerk- und Telefondosen
 
-Hier ist ein Vorschlag für eine README-Datei für dein Projekt **PatchControl**. Diese README enthält alle wichtigen Informationen über das Projekt, wie die Installation, Nutzung und Ziele. Natürlich kannst du sie anpassen, falls sich das Projekt weiterentwickelt oder du spezielle Anweisungen hinzufügen möchtest.
-
----
-
-# PatchControl
-
 **PatchControl** ist eine Python-basierte Anwendung zur Verwaltung von Netzwerk- und Telefondosen in einer Unternehmensumgebung. Das Tool erlaubt das Hinzufügen, Bearbeiten und Löschen von Dosen sowie die Zuweisung von IP-Adressen oder Telefonnummern. Es soll die Organisation und Wartung der IT-Infrastruktur effizienter gestalten.
 
 ## Inhaltsverzeichnis
