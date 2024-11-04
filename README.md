@@ -90,7 +90,7 @@ Da das Projekt zurzeit intern genutzt wird, ist es vorerst nicht öffentlich liz
 
 ---
 
-**Hinweis**: Dieses Projekt wurde entwickelt für den Einsatz in einer Unternehmensumgebung und sollte nicht ohne entsprechende Anpassungen in anderen Umgebungen genutzt werden.
+**Hinweis**: Dieses Projekt wird für den Einsatz in einer Unternehmensumgebung entwickelt und sollte nicht ohne entsprechende Anpassungen in anderen Umgebungen genutzt werden.
 
 ---
 
