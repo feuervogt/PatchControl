@@ -71,7 +71,7 @@ PatchControl wird entwickelt, um IT-Administratoren eine zentrale Möglichkeit z
 
 ## Beitragen
 
-Falls du oder deine Azubis zum Projekt beitragen möchten, sind folgende Schritte notwendig:
+Falls Ihr etwas zum Projekt beitragen möchtet, sind folgende Schritte notwendig:
 
 1. **Forke das Repository** und klone es lokal.
 2. Erstelle einen neuen Branch für deine Änderungen:
