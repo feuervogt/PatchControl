@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import (
-    QApplication, QWidget, QVBoxLayout, QHBoxLayout, QFormLayout, QGroupBox, QPushButton, QLineEdit, QTextEdit, QSpacerItem, QSizePolicy, QGridLayout
+    QApplication, QWidget, QVBoxLayout, QHBoxLayout, QFormLayout, QGroupBox, QPushButton, QLineEdit, QTextEdit, QLabel, QSizePolicy, QFrame
 )
 from PyQt5.QtCore import Qt
 
@@ -12,100 +12,125 @@ class PatchControlGUI(QWidget):
         self.initUI()
 
     def initUI(self):
-        main_layout = QHBoxLayout()
-
-        # Funktion zur Erstellung eines einheitlichen Eingabefeldes
-        def create_input_field():
+        # Funktion zur Erstellung eines rechtsbündigen Eingabefeldes mit einheitlicher Breite
+        def create_right_aligned_input_field():
             line_edit = QLineEdit()
-            line_edit.setFixedWidth(120)  # Eingabefeld auf eine feste Breite setzen
+            line_edit.setFixedWidth(120)  # Einheitliche Breite für alle Eingabefelder setzen
+            line_edit.setAlignment(Qt.AlignRight)  # Rechtsbündig ausrichten
             return line_edit
 
-        # Grid-Layout für die linke Spalte (um den freien Platz zu entfernen)
-        left_column_layout = QGridLayout()
-        left_column_layout.setContentsMargins(0, 0, 0, 0)  # Ränder auf 0 setzen
-        left_column_layout.setSpacing(5)  # Abstand zwischen den Zellen reduzieren
+        # Linke Spalte mit Anschlussdose, TK-Anlage und Hauptverteiler
+        left_column_layout = QVBoxLayout()
+        left_column_layout.setSpacing(10)
 
-        # Anschlussdose-Gruppe (oben links)
+        # Anschlussdose-Gruppe
         anschlussdose_group = QGroupBox("Anschlussdose")
         anschlussdose_layout = QFormLayout()
-        anschlussdose_layout.addRow("Gebäude:", create_input_field())
-        anschlussdose_layout.addRow("Etage:", create_input_field())
-        anschlussdose_layout.addRow("Raum:", create_input_field())
-        anschlussdose_layout.addRow("Dose:", create_input_field())
-        testfield_field = create_input_field()
-        testfield_field.setAlignment(Qt.AlignRight)
-        anschlussdose_layout.addRow("Test:", testfield_field)
+        anschlussdose_layout.setLabelAlignment(Qt.AlignLeft)
+        anschlussdose_layout.setFormAlignment(Qt.AlignLeft | Qt.AlignTop)
+        anschlussdose_layout.addRow("Gebäude:", create_right_aligned_input_field())
+        anschlussdose_layout.addRow("Etage:", create_right_aligned_input_field())
+        anschlussdose_layout.addRow("Raum:", create_right_aligned_input_field())
+        anschlussdose_layout.addRow("Dose:", create_right_aligned_input_field())
+        anschlussdose_layout.addRow("Test:", create_right_aligned_input_field())
         anschlussdose_group.setLayout(anschlussdose_layout)
-        left_column_layout.addWidget(anschlussdose_group, 0, 0)  # Positioniert in der oberen linken Ecke
+        left_column_layout.addWidget(anschlussdose_group)
 
-        # Anschlussinformation-Gruppe (oben rechts)
-        anschlussinformation_group = QGroupBox("Anschlussinformation")
-        anschlussinformation_layout = QFormLayout()
-        anschlussinformation_layout.addRow("Aktiv:", create_input_field())
-        anschlussinformation_layout.addRow("Aktuelle Durchwahl:", create_input_field())
-        anschlussinformation_group.setLayout(anschlussinformation_layout)
-        left_column_layout.addWidget(anschlussinformation_group, 0, 1)  # Positioniert in der oberen rechten Ecke
-
-        # TK-Anlage-Gruppe (unten links)
+        # TK-Anlage-Gruppe
         tkanlage_group = QGroupBox("TK-Anlage")
         tkanlage_layout = QFormLayout()
-        tkanlage_layout.addRow("Verteilung:", create_input_field())
-        tkanlage_layout.addRow("Bucht:", create_input_field())
-        tkanlage_layout.addRow("Leiste:", create_input_field())
-        tkanlage_layout.addRow("Stift:", create_input_field())
-        tkanlage_layout.addRow("Knoten:", create_input_field())
-        tkanlage_layout.addRow("Baugruppe:", create_input_field())
-        tkanlage_layout.addRow("Leiterplatte:", create_input_field())
-        tkanlage_layout.addRow("Geräteadresse:", create_input_field())
+        tkanlage_layout.setLabelAlignment(Qt.AlignLeft)
+        tkanlage_layout.setFormAlignment(Qt.AlignLeft | Qt.AlignTop)
+        tkanlage_layout.addRow("Verteilung:", create_right_aligned_input_field())
+        tkanlage_layout.addRow("Bucht:", create_right_aligned_input_field())
+        tkanlage_layout.addRow("Leiste:", create_right_aligned_input_field())
+        tkanlage_layout.addRow("Stift:", create_right_aligned_input_field())
+        tkanlage_layout.addRow("Knoten:", create_right_aligned_input_field())
+        tkanlage_layout.addRow("Baugruppe:", create_right_aligned_input_field())
+        tkanlage_layout.addRow("Leiterplatte:", create_right_aligned_input_field())
+        tkanlage_layout.addRow("Geräteadresse:", create_right_aligned_input_field())
         tkanlage_group.setLayout(tkanlage_layout)
-        left_column_layout.addWidget(tkanlage_group, 1, 0)  # Positioniert in der unteren linken Ecke
+        left_column_layout.addWidget(tkanlage_group)
 
-        # Unterverteiler-Gruppe (unten rechts)
+        # Hauptverteiler-Gruppe
+        hauptverteiler_group = QGroupBox("Hauptverteiler")
+        hauptverteiler_layout = QFormLayout()
+        hauptverteiler_layout.setLabelAlignment(Qt.AlignLeft)
+        hauptverteiler_layout.setFormAlignment(Qt.AlignLeft | Qt.AlignTop)
+        hauptverteiler_layout.addRow("Verteilung:", create_right_aligned_input_field())
+        hauptverteiler_layout.addRow("Bucht:", create_right_aligned_input_field())
+        hauptverteiler_layout.addRow("Leiste:", create_right_aligned_input_field())
+        hauptverteiler_layout.addRow("Stift:", create_right_aligned_input_field())
+        hauptverteiler_group.setLayout(hauptverteiler_layout)
+        left_column_layout.addWidget(hauptverteiler_group)
+
+        # Mittlere und rechte Spalte bleiben unverändert
+        # Mittlere Spalte mit Anschlussinformation und Unterverteiler
+        middle_column_layout = QVBoxLayout()
+        middle_column_layout.setSpacing(10)
+
+        anschlussinformation_group = QGroupBox("Anschlussinformation")
+        anschlussinformation_layout = QFormLayout()
+        anschlussinformation_layout.setLabelAlignment(Qt.AlignLeft)
+        anschlussinformation_layout.setFormAlignment(Qt.AlignLeft | Qt.AlignTop)
+        anschlussinformation_layout.addRow("Aktiv:", create_right_aligned_input_field())
+        anschlussinformation_layout.addRow("Aktuelle Durchwahl:", create_right_aligned_input_field())
+        anschlussinformation_group.setLayout(anschlussinformation_layout)
+        middle_column_layout.addWidget(anschlussinformation_group)
+
         unterverteiler_group = QGroupBox("Unterverteiler")
         unterverteiler_layout = QVBoxLayout()
-        for _ in range(4):  # Mehrere Reihen von Unterverteilern
+        for _ in range(4):
             row_layout = QFormLayout()
-            row_layout.addRow("Verteilung:", create_input_field())
-            row_layout.addRow("Bucht:", create_input_field())
-            row_layout.addRow("Leiste:", create_input_field())
-            row_layout.addRow("Stift:", create_input_field())
+            row_layout.setLabelAlignment(Qt.AlignLeft)
+            row_layout.setFormAlignment(Qt.AlignLeft | Qt.AlignTop)
+            row_layout.addRow("Verteilung:", create_right_aligned_input_field())
+            row_layout.addRow("Bucht:", create_right_aligned_input_field())
+            row_layout.addRow("Leiste:", create_right_aligned_input_field())
+            row_layout.addRow("Stift:", create_right_aligned_input_field())
             unterverteiler_layout.addLayout(row_layout)
+
+            line = QFrame()
+            line.setFrameShape(QFrame.HLine)
+            line.setFrameShadow(QFrame.Sunken)
+            unterverteiler_layout.addWidget(line)
+
         unterverteiler_group.setLayout(unterverteiler_layout)
-        left_column_layout.addWidget(unterverteiler_group, 1, 1)  # Positioniert in der unteren rechten Ecke
+        middle_column_layout.addWidget(unterverteiler_group)
 
-        # Layout für die rechte Spalte (Buttons in zwei Spalten: Abfragen und Aktionen)
-        button_layout = QVBoxLayout()  # Vertikales Layout, um den neuen Block "Platzhalter" oben einzufügen
+        # Rechte Spalte mit Platzhalter, Abfragen und Aktionen
+        button_layout = QVBoxLayout()
+        button_layout.setSpacing(10)
 
-        # Neuer Platzhalter-Block mit einem Beschreibungsfeld
         placeholder_group = QGroupBox("Platzhalter")
         placeholder_layout = QVBoxLayout()
         description_field = QTextEdit()
         description_field.setPlaceholderText("Beschreibung eingeben...")
-        placeholder_layout.addWidget(description_field)  # Fügt das Beschreibungsfeld hinzu
+        description_field.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        placeholder_layout.addWidget(description_field)
+
+        explanation_label = QLabel("ankommend = Anschluss kommt vom Verteiler oder von der TK-Anlage\n"
+                                   "abgehend = Anschluss geht zum nächsten Verteiler oder zur Dose")
+        explanation_label.setWordWrap(True)
+        placeholder_layout.addWidget(explanation_label)
         placeholder_group.setLayout(placeholder_layout)
-        button_layout.addWidget(placeholder_group)  # Platzhalter füllt den oberen Raum aus
+        button_layout.addWidget(placeholder_group)
 
-        # Horizontales Layout für "Abfragen" und "Aktionen"
-        horizontal_buttons_layout = QHBoxLayout()
-
-        # Abfrage-Buttons (Gruppe "Abfragen")
         query_buttons = QGroupBox("Abfragen")
         query_layout = QVBoxLayout()
-        query_layout.setSpacing(3)  # Sehr geringer Abstand zwischen den Buttons
+        query_layout.setSpacing(3)
         query_layout.addWidget(QPushButton("Abfrage Dose"))
         query_layout.addWidget(QPushButton("Abfrage TK-Anlage"))
         query_layout.addWidget(QPushButton("Abfrage Unterverteilung"))
         query_layout.addWidget(QPushButton("Abfrage Rufnummer"))
-        query_layout.addWidget(QPushButton("Historie Dose"))  # Der letzte Button bleibt am unteren Rand
+        query_layout.addWidget(QPushButton("Historie Dose"))
         query_buttons.setLayout(query_layout)
-        query_buttons.setFixedHeight(200)  # Reduzierte Höhe für Abfragen
-        horizontal_buttons_layout.addWidget(query_buttons)
+        button_layout.addWidget(query_buttons)
 
-        # Aktions-Buttons (Gruppe "Aktionen")
         action_buttons = QGroupBox("Aktionen")
         action_layout = QVBoxLayout()
-        action_layout.setSpacing(3)  # Sehr geringer Abstand zwischen den Buttons
-        
+        action_layout.setSpacing(3)
+
         save_button = QPushButton("Speichern & Schließen")
         save_button.setFixedHeight(40)
         save_button.setStyleSheet("background-color: red; color: white;")
@@ -125,20 +150,16 @@ class PatchControlGUI(QWidget):
         action_layout.addWidget(insert_button)
         action_layout.addWidget(update_button)
         action_layout.addWidget(edit_button)
-        action_layout.addWidget(save_button)  # Der letzte Button bleibt am unteren Rand
+        action_layout.addWidget(save_button)
         action_buttons.setLayout(action_layout)
-        action_buttons.setFixedHeight(200)  # Reduzierte Höhe für Aktionen
-        horizontal_buttons_layout.addWidget(action_buttons)  # Aktionen rechts neben Abfragen hinzufügen
+        button_layout.addWidget(action_buttons)
 
-        # Füge das horizontale Layout mit "Abfragen" und "Aktionen" dem button_layout hinzu
-        button_layout.addLayout(horizontal_buttons_layout)
-
-        # Hinzufügen aller Layouts zum Hauptlayout
+        # Hauptlayout für das Fenster
         overall_layout = QHBoxLayout()
-        overall_layout.addLayout(left_column_layout)  # Linkes Layout für die Felder
-        overall_layout.addLayout(button_layout)       # Button-Spalte mit Platzhalter, Abfragen und Aktionen
+        overall_layout.addLayout(left_column_layout)
+        overall_layout.addLayout(middle_column_layout)
+        overall_layout.addLayout(button_layout)
 
-        # Setzt das gesamte Layout für das Fenster
         self.setLayout(overall_layout)
 
 # Hauptfunktion zum Ausführen der App
